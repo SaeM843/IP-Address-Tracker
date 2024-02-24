@@ -1,0 +1,24 @@
+{
+  "name": "ip-address-tracker-master",
+  "version": "1.0.0",
+  "description": "![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch sass:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaeM843/IP-Address-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaeM843/IP-Address-Tracker/issues"
+  },
+  "homepage": "https://github.com/SaeM843/IP-Address-Tracker#readme",
+  "dependencies": {
+    "sass": "^1.71.1"
+  }
+}
