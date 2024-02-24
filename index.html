@@ -41,19 +41,30 @@
           </button>
         </form>
 
-        <div class="search__results"></div>
+        <div class="search__results">
+          <div class="search__box ip-address">
+            <span class="info-title">IP Address</span>
+            <span class="ip-result"></span>
+          </div>
+
+          <div class="search__box location">
+            <span class="info-title">Location</span>
+            <span class="location-result"></span>
+          </div>
+
+          <div class="search__box timezone">
+            <span class="info-title">Timezone</span>
+            <span class="timezone-result"></span>
+          </div>
+
+          <div class="search__box isp">
+            <span class="info-title">ISP</span>
+            <span class="isp-result"></span>
+          </div>
+        </div>
       </div>
     </main>
 
-    IP Address Location Timezone UTC
     <!-- add offset value dynamically using the API -->
-    ISP
-
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
   </body>
 </html>
