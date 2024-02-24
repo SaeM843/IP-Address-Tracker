@@ -63,5 +63,8 @@ body {
   font-size: 18px;
   outline: none;
 }
+.search form button[type=submit] {
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=style.css.map */
