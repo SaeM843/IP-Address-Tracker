@@ -107,5 +107,8 @@ body {
 .search__results .info-field {
   margin-top: 0.7rem;
 }
+.search .map {
+  height: 70vh;
+}
 
 /*# sourceMappingURL=style.css.map */
