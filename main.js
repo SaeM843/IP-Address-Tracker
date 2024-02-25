@@ -5,17 +5,31 @@ const locationEl = document.querySelector(".location-result");
 const timezoneEl = document.querySelector(".timezone-result");
 const ispEl = document.querySelector(".isp-result");
 
-const map = L.map("map").setView([51.505, -0.09], 13);
-const tileUrl = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
-// navigator.geolocation.getCurrentPosition(
-//   function (position) {
-//     console.log(position);
-//   },
-//   function () {
-//     alert("Could not get your location");
-//   }
-// );
+navigator.geolocation.getCurrentPosition(
+  function (position) {
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    console.log(latitude, longitude);
+
+    const coords = [latitude, longitude];
+
+    const map = L.map("map").setView(coords, 13);
+
+    const tileUrl = L.tileLayer(
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }
+    ).addTo(map);
+
+    const marker = L.marker(coords)
+      .addTo(map)
+      .bindPopup("<b>Hello world!</b><br>I am a popup.")
+      .openPopup();
+  },
+  function () {
+    alert("Could not get your location");
+  }
+);
