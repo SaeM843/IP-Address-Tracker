@@ -83,11 +83,29 @@ body {
   top: 10%;
   border-radius: 1rem;
   box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.25);
+  padding: 1.75rem 2rem;
   display: flex;
   justify-content: space-between;
 }
+.search__results .result-box {
+  width: 25%;
+  padding: 0 1.5rem;
+}
 .search__results .result-box:not(:last-child) {
   border-right: 1.5px solid hsl(0, 0%, 59%);
+}
+.search__results .result-box:not(:last-child) span {
+  display: block;
+}
+.search__results .info-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 59%);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.search__results .info-field {
+  margin-top: 0.7rem;
 }
 
 /*# sourceMappingURL=style.css.map */
