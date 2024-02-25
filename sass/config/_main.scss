@@ -12,16 +12,18 @@
   &__heading {
     color: white;
     text-align: center;
+    font-weight: 500;
   }
 
   form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem 0;
 
     #ip-input {
-      width: 30%;
-      padding: 0.75rem;
+      width: 33%;
+      padding: 0.8rem 0.75rem;
       border-radius: 0.75rem 0 0 0.75rem;
       border: 1px solid var.$dark-gray;
       font-size: 18px;
@@ -29,6 +31,11 @@
     }
     button[type="submit"] {
       cursor: pointer;
+      border-radius: 0 0.75rem 0.75rem 0;
+      outline: none;
+      border: 1px solid var.$dark-gray;
+      padding: 1rem;
+      background-color: black;
     }
   }
 }

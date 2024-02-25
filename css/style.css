@@ -49,15 +49,17 @@ body {
 .search__heading {
   color: white;
   text-align: center;
+  font-weight: 500;
 }
 .search form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 }
 .search form #ip-input {
-  width: 30%;
-  padding: 0.75rem;
+  width: 33%;
+  padding: 0.8rem 0.75rem;
   border-radius: 0.75rem 0 0 0.75rem;
   border: 1px solid hsl(0, 0%, 59%);
   font-size: 18px;
@@ -65,6 +67,11 @@ body {
 }
 .search form button[type=submit] {
   cursor: pointer;
+  border-radius: 0 0.75rem 0.75rem 0;
+  outline: none;
+  border: 1px solid hsl(0, 0%, 59%);
+  padding: 1rem;
+  background-color: black;
 }
 
 /*# sourceMappingURL=style.css.map */
