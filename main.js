@@ -49,16 +49,16 @@ function renderResults(data) {
   }
 
   ipEl.textContent = data.ip;
-  locationEl.textContent = `${data.city}, ${data.region}, ${data.country}`;
-  timezoneEl.textContent = `UTC: ${data.timezone}`;
+  locationEl.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
+  timezoneEl.textContent = `UTC: ${data.location.timezone}`;
   ispEl.textContent = data.isp;
 
-  map.setView([data.latitude, data.longitude], 13);
-  marker
-    .marker([data.latitude, data.longitude])
-    .addTo(map)
-    .bindPopup(`<b>${data.ip}</b>`)
-    .openPopup();
+  // map.setView([data.latitude, data.longitude], 13);
+  // marker
+  //   .marker([data.latitude, data.longitude])
+  //   .addTo(map)
+  //   .bindPopup(`<b>${data.ip}</b>`)
+  //   .openPopup();
 }
 
 form.addEventListener("submit", getIP);
