@@ -40,7 +40,25 @@ const getIP = function (e) {
 
   fetch(API_Key + input.value)
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => renderResults(data));
 };
+
+function renderResults(data) {
+  if (data.error) {
+    throw `${data.reason}`;
+  }
+
+  ipEl.textContent = data.ip;
+  locationEl.textContent = `${data.city}, ${data.region}, ${data.country}`;
+  timezoneEl.textContent = `UTC: ${data.timezone}`;
+  ispEl.textContent = data.isp;
+
+  map.setView([data.latitude, data.longitude], 13);
+  marker
+    .marker([data.latitude, data.longitude])
+    .addTo(map)
+    .bindPopup(`<b>${data.ip}</b>`)
+    .openPopup();
+}
 
 form.addEventListener("submit", getIP);
