@@ -1,3 +1,5 @@
+"use strict";
+
 const form = document.querySelector("form");
 const input = document.getElementById("ip-input");
 const ipEl = document.querySelector(".ip-result");
@@ -6,42 +8,80 @@ const timezoneEl = document.querySelector(".timezone-result");
 const ispEl = document.querySelector(".isp-result");
 const API_Key = config.apikey;
 
-navigator.geolocation.getCurrentPosition(
-  function (position) {
-    const { latitude } = position.coords;
-    const { longitude } = position.coords;
-    console.log(latitude, longitude);
+let lat;
+let lng;
 
-    const coords = [latitude, longitude];
+//Get the current location//
+// navigator.geolocation.getCurrentPosition(
+//   function (position) {
+//     const { latitude } = position.coords;
+//     const { longitude } = position.coords;
+//     // console.log(latitude, longitude);
 
-    const map = L.map("map").setView(coords, 13);
+//     const coords = [latitude, longitude];
 
-    const tileUrl = L.tileLayer(
-      "https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-      {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }
-    ).addTo(map);
+//     const map = L.map("map").setView(coords, 13);
 
-    const marker = L.marker(coords)
-      .addTo(map)
-      .bindPopup("<b>Hello world!</b><br>I am a popup.")
-      .openPopup();
-  },
-  function () {
-    alert("Could not get your location");
-  }
-);
+//     const tileUrl = L.tileLayer(
+//       "https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+//       {
+//         maxZoom: 19,
+//         attribution:
+//           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+//       }
+//     ).addTo(map);
 
-const getIP = function (e) {
-  e.preventDefault();
+//     const marker = L.marker(coords)
+//       .addTo(map)
+//       .bindPopup("<b>Hello world!</b><br>I am a popup.")
+//       .openPopup();
+//   },
+//   function () {
+//     alert("Could not get your location");
+//   }
+// );
 
-  fetch(API_Key + input.value)
-    .then((res) => res.json())
-    .then((data) => renderResults(data));
-};
+// const getIP = function (e) {
+//   e.preventDefault();
+
+//   fetch(API_Key + input.value)
+//     .then((res) => res.json())
+//     .then((data) => renderResults(data));
+// };
+
+// function renderResults(data) {
+//   if (data.error) {
+//     throw `${data.reason}`;
+//   }
+
+//   ipEl.textContent = data.ip;
+//   locationEl.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
+//   timezoneEl.textContent = `UTC: ${data.location.timezone}`;
+//   ispEl.textContent = data.isp;
+
+//   map.setView([data.latitude, data.longitude], 13);
+//   // map.setView([data.latitude, data.longitude], 13);
+//   // marker
+//   //   .marker([data.latitude, data.longitude])
+//   //   .addTo(map)
+//   //   .bindPopup(`<b>${data.ip}</b>`)
+//   //   .openPopup();
+// }
+
+// form.addEventListener("submit", getIP);
+
+//Map
+let map = L.map("map").setView([51.505, -0.09], 13);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+fetch(API_Key + input.value)
+  .then((res) => res.json())
+  .then((data) => renderResults(data))
+  .catch((error) => console.log(error));
 
 function renderResults(data) {
   if (data.error) {
@@ -53,12 +93,23 @@ function renderResults(data) {
   timezoneEl.textContent = `UTC: ${data.location.timezone}`;
   ispEl.textContent = data.isp;
 
-  // map.setView([data.latitude, data.longitude], 13);
-  // marker
-  //   .marker([data.latitude, data.longitude])
-  //   .addTo(map)
-  //   .bindPopup(`<b>${data.ip}</b>`)
-  //   .openPopup();
+  lat = data.location.lat;
+  lng = data.location.lng;
+  // console.log(lat, lng);
+
+  mapLocation(lat, lng);
 }
 
-form.addEventListener("submit", getIP);
+//Marker
+const mapLocation = function (lat, lng) {
+  const marker = L.icon({
+    iconUrl: "./images/icon-location.svg",
+  });
+  map.setView([lat, lng], 13);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: false,
+  }).addTo(map);
+
+  L.marker([lat, lng], { icon: marker }).addTo(map);
+};
