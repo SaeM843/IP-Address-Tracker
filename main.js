@@ -16,7 +16,7 @@ navigator.geolocation.getCurrentPosition(
     const map = L.map("map").setView(coords, 13);
 
     const tileUrl = L.tileLayer(
-      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      "https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
       {
         maxZoom: 19,
         attribution:
