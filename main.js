@@ -33,3 +33,11 @@ navigator.geolocation.getCurrentPosition(
     alert("Could not get your location");
   }
 );
+
+const getIP = function (e) {
+  e.preventDefault();
+
+  fetch(`https://ipapi.co/${input.value}/json/`).then((res) => res.json());
+};
+
+form.addEventListener("submit", getIP);
