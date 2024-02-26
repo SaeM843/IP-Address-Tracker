@@ -4,6 +4,7 @@ const ipEl = document.querySelector(".ip-result");
 const locationEl = document.querySelector(".location-result");
 const timezoneEl = document.querySelector(".timezone-result");
 const ispEl = document.querySelector(".isp-result");
+const API_Key = config.apikey;
 
 navigator.geolocation.getCurrentPosition(
   function (position) {
@@ -37,7 +38,9 @@ navigator.geolocation.getCurrentPosition(
 const getIP = function (e) {
   e.preventDefault();
 
-  fetch(`https://ipapi.co/${input.value}/json/`).then((res) => res.json());
+  fetch(API_Key + input.value)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 };
 
 form.addEventListener("submit", getIP);
