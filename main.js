@@ -98,6 +98,8 @@ function renderResults(data) {
   // console.log(lat, lng);
 
   mapLocation(lat, lng);
+
+  form.reset();
 }
 
 //Marker
