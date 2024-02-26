@@ -113,3 +113,24 @@ const mapLocation = function (lat, lng) {
 
   L.marker([lat, lng], { icon: marker }).addTo(map);
 };
+
+//Search by ip and validation
+
+const validateIP = function (e) {
+  e.preventDefault();
+
+  const regex =
+    /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$/;
+
+  if (input.value.match(regex)) {
+    fetch(API_Key + input.value)
+      .then((res) => res.json())
+      .then((data) => renderResults(data))
+      .catch((error) => console.log(error));
+  } else {
+    alert("Invalid IP address!");
+    return;
+  }
+};
+
+form.addEventListener("submit", validateIP);
