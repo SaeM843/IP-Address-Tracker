@@ -42,11 +42,16 @@ body {
   min-height: 100vh;
 }
 .search__top {
-  background-image: url("../../images/pattern-bg-desktop.png");
+  background-image: url("https://github.com/SaeM843/IP-Address-Tracker/blob/main/images/pattern-bg-desktop.png?raw=true");
   background-repeat: no-repeat;
   background-size: cover;
   height: 30vh;
   padding: 1.2rem 0;
+}
+@media screen and (max-width: 480px) {
+  .search__top {
+    background-image: url("https://github.com/SaeM843/IP-Address-Tracker/blob/main/images/pattern-bg-mobile.png?raw=true");
+  }
 }
 .search__heading {
   color: white;
