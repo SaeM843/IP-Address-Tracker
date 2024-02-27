@@ -98,8 +98,7 @@ function renderResults(data) {
   // console.log(lat, lng);
 
   mapLocation(lat, lng);
-
-  form.reset();
+  input.value = "";
 }
 
 //Marker
@@ -131,6 +130,7 @@ const validateIP = function (e) {
       .catch((error) => console.log(error));
   } else {
     alert("Invalid IP address!");
+    input.value = "";
     return;
   }
 };
