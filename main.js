@@ -10,65 +10,7 @@ const API_Key = config.apikey;
 
 let lat;
 let lng;
-
-//Get the current location//
-// navigator.geolocation.getCurrentPosition(
-//   function (position) {
-//     const { latitude } = position.coords;
-//     const { longitude } = position.coords;
-//     // console.log(latitude, longitude);
-
-//     const coords = [latitude, longitude];
-
-//     const map = L.map("map").setView(coords, 13);
-
-//     const tileUrl = L.tileLayer(
-//       "https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-//       {
-//         maxZoom: 19,
-//         attribution:
-//           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-//       }
-//     ).addTo(map);
-
-//     const marker = L.marker(coords)
-//       .addTo(map)
-//       .bindPopup("<b>Hello world!</b><br>I am a popup.")
-//       .openPopup();
-//   },
-//   function () {
-//     alert("Could not get your location");
-//   }
-// );
-
-// const getIP = function (e) {
-//   e.preventDefault();
-
-//   fetch(API_Key + input.value)
-//     .then((res) => res.json())
-//     .then((data) => renderResults(data));
-// };
-
-// function renderResults(data) {
-//   if (data.error) {
-//     throw `${data.reason}`;
-//   }
-
-//   ipEl.textContent = data.ip;
-//   locationEl.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
-//   timezoneEl.textContent = `UTC: ${data.location.timezone}`;
-//   ispEl.textContent = data.isp;
-
-//   map.setView([data.latitude, data.longitude], 13);
-//   // map.setView([data.latitude, data.longitude], 13);
-//   // marker
-//   //   .marker([data.latitude, data.longitude])
-//   //   .addTo(map)
-//   //   .bindPopup(`<b>${data.ip}</b>`)
-//   //   .openPopup();
-// }
-
-// form.addEventListener("submit", getIP);
+let ipLocation;
 
 //Map
 let map = L.map("map").setView([51.505, -0.09], 13);
@@ -88,7 +30,7 @@ function renderResults(data) {
     throw `${data.reason}`;
   }
 
-  ipEl.textContent = data.ip;
+  ipEl.textContent = ipLocation = data.ip;
   locationEl.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
   timezoneEl.textContent = `UTC: ${data.location.timezone}`;
   ispEl.textContent = data.isp;
@@ -112,7 +54,10 @@ const mapLocation = function (lat, lng) {
     attribution: false,
   }).addTo(map);
 
-  L.marker([lat, lng], { icon: marker }).addTo(map);
+  L.marker([lat, lng], { icon: marker })
+    .addTo(map)
+    .bindPopup(`<b>${ipLocation}</b>`)
+    .openPopup();
 };
 
 //Search by ip and validation
