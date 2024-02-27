@@ -71,22 +71,23 @@
     .result-box {
       width: 25%;
       padding: 0 1.5rem;
+      word-wrap: break-word;
 
       @include responsive() {
         width: 100%;
-        padding: 0;
       }
 
       &:not(:last-child) {
         border-right: 1.5px solid var.$dark-gray;
+        padding-bottom: 1.5rem;
 
         @include responsive() {
           border: none;
         }
+      }
 
-        span {
-          display: block;
-        }
+      span {
+        display: block;
       }
     }
 
@@ -104,6 +105,12 @@
 
     .info-field {
       margin-top: 0.7rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      @include responsive() {
+        font-size: 1rem;
+      }
     }
   }
   #map {

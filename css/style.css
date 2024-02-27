@@ -105,22 +105,23 @@ body {
 .search__results .result-box {
   width: 25%;
   padding: 0 1.5rem;
+  word-wrap: break-word;
 }
 @media screen and (max-width: 480px) {
   .search__results .result-box {
     width: 100%;
-    padding: 0;
   }
 }
 .search__results .result-box:not(:last-child) {
   border-right: 1.5px solid hsl(0, 0%, 59%);
+  padding-bottom: 1.5rem;
 }
 @media screen and (max-width: 480px) {
   .search__results .result-box:not(:last-child) {
     border: none;
   }
 }
-.search__results .result-box:not(:last-child) span {
+.search__results .result-box span {
   display: block;
 }
 .search__results .info-title {
@@ -137,6 +138,13 @@ body {
 }
 .search__results .info-field {
   margin-top: 0.7rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+@media screen and (max-width: 480px) {
+  .search__results .info-field {
+    font-size: 1rem;
+  }
 }
 .search #map {
   min-height: 80vh;
