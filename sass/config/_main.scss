@@ -11,6 +11,10 @@
     background-size: cover;
     height: 30vh;
     padding: 1.2rem 0;
+
+    @include responsive() {
+      background-image: url("../../images/pattern-bg-mobile.png");
+    }
   }
 
   &__heading {
