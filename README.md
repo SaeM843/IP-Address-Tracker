@@ -1,4 +1,4 @@
-# Frontend Mentor - IP address tracker
+<h1 align="center">IP address tracker</h1>
 
 ![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)
 
