@@ -1,5 +1,7 @@
 <h1 align="center">IP address tracker</h1>
 
+<p align="center">challenge from <a href="https://www.frontendmentor.io">Frontend Mentor</a></p>
+
 ![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
