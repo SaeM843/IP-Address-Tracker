@@ -1,7 +1,7 @@
 <h1 align="center">IP address tracker</h1>
 
 <p align="center">challenge from <a href="https://www.frontendmentor.io">Frontend Mentor</a></p>
-<h2 align="center"><a href="https://saem843.github.io/IP-Address-Tracker/">🚀Live Site</h2>
+<h2 align="center"><a href="https://saem843.github.io/IP-Address-Tracker/">🚀Live Site</a>||<a href="./README.md">README in English</h2></a>
 <p align="center">このアプリケーションはアクセスしたユーザーの国や地域、IPアドレス等の情報を取得することが出来ます。　またユーザーがIPアドレスを入力し、それに該当する国や地域の情報を取得することもできます。</p>
 
 ![Completed IP Address Tracker](./images/ip-tracker.png)
