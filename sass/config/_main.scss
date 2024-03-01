@@ -12,7 +12,7 @@
     height: 30vh;
     padding: 1.2rem 0;
 
-    @include responsive() {
+    @include mq(sp) {
       background-image: url("https://github.com/SaeM843/IP-Address-Tracker/blob/main/images/pattern-bg-mobile.png?raw=true");
     }
   }
@@ -37,8 +37,12 @@
       font-size: 18px;
       outline: none;
 
-      @include responsive() {
+      @include mq(sp) {
         width: 80%;
+      }
+
+      @include mq(tab) {
+        width: 70%;
       }
     }
     button[type="submit"] {
@@ -65,11 +69,16 @@
     display: flex;
     justify-content: space-between;
 
-    @include responsive() {
+    @include mq(sp) {
       display: flex;
       flex-direction: column;
       text-align: center;
       width: 75vw;
+    }
+
+    @include mq(tab) {
+      width: 85vw;
+      padding: 1rem 0;
     }
 
     .result-box {
@@ -77,7 +86,7 @@
       padding: 0 1.5rem;
       word-wrap: break-word;
 
-      @include responsive() {
+      @include mq(sp) {
         width: 100%;
       }
 
@@ -85,7 +94,7 @@
         border-right: 1.5px solid var.$dark-gray;
         padding-bottom: 1.5rem;
 
-        @include responsive() {
+        @include mq(sp) {
           border: none;
         }
       }
@@ -102,7 +111,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1rem;
 
-      @include responsive() {
+      @include mq(sp) {
         font-size: 0.7rem;
       }
     }
@@ -112,8 +121,13 @@
       font-size: 1.5rem;
       font-weight: 700;
 
-      @include responsive() {
+      @include mq(sp) {
         font-size: 1rem;
+      }
+
+      @include mq(tab) {
+        font-size: 0.9rem;
+        font-weight: 600;
       }
     }
   }

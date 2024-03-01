@@ -1,5 +1,17 @@
-@mixin responsive() {
-  @media screen and (max-width: 480px) {
+// @mixin responsive() {
+//   @media screen and (max-width: 480px) {
+//     @content;
+//   }
+// }
+
+$breakpoint: (
+  sp: "screen and (max-width: 480px)",
+  tab: "screen and (max-width: 768px)",
+  // pc: "screen and (min-width: 1025px)",
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
     @content;
   }
 }

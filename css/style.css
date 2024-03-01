@@ -77,6 +77,11 @@ body {
     width: 80%;
   }
 }
+@media screen and (max-width: 768px) {
+  .search form #ip-input {
+    width: 70%;
+  }
+}
 .search form button[type=submit] {
   cursor: pointer;
   border-radius: 0 0.75rem 0.75rem 0;
@@ -105,6 +110,12 @@ body {
     flex-direction: column;
     text-align: center;
     width: 75vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search__results {
+    width: 85vw;
+    padding: 1rem 0;
   }
 }
 .search__results .result-box {
@@ -149,6 +160,12 @@ body {
 @media screen and (max-width: 480px) {
   .search__results .info-field {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search__results .info-field {
+    font-size: 0.9rem;
+    font-weight: 600;
   }
 }
 .search #map {
