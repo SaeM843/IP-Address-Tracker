@@ -6,7 +6,6 @@ const ipEl = document.querySelector(".ip-result");
 const locationEl = document.querySelector(".location-result");
 const timezoneEl = document.querySelector(".timezone-result");
 const ispEl = document.querySelector(".isp-result");
-const API_Key = config.apikey;
 
 let lat;
 let lng;
@@ -20,7 +19,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-fetch(API_Key + input.value)
+fetch("https://ipapi.co/json/")
   .then((res) => res.json())
   .then((data) => renderResults(data))
   .catch((error) => console.log(error));
@@ -31,12 +30,17 @@ function renderResults(data) {
   }
 
   ipEl.textContent = ipLocation = data.ip;
-  locationEl.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
-  timezoneEl.textContent = `UTC: ${data.location.timezone}`;
-  ispEl.textContent = data.isp;
+  locationEl.textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+  if (data.utc_offset !== null) {
+    timezoneEl.textContent =
+      "UTC: " + data.utc_offset.slice(0, 3) + ":" + data.utc_offset.slice(3);
+  } else {
+    timezoneEl.textContent = data.timezone;
+  }
+  ispEl.textContent = data.org;
 
-  lat = data.location.lat;
-  lng = data.location.lng;
+  lat = data.latitude;
+  lng = data.longitude;
   // console.log(lat, lng);
 
   mapLocation(lat, lng);
@@ -66,10 +70,11 @@ const validateIP = function (e) {
   e.preventDefault();
 
   const regex =
-    /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$/;
+    "((([0-9a-f]{1,4}:){7}([0-9a-f]{1,4}|:))|(([0-9a-f]{1,4}:){6}(:[0-9a-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9a-f]{1,4}:){5}(((:[0-9a-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9a-f]{1,4}:){4}(((:[0-9a-f]{1,4}){1,3})|((:[0-9a-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9a-f]{1,4}:){3}(((:[0-9a-f]{1,4}){1,4})|((:[0-9a-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9a-f]{1,4}:){2}(((:[0-9a-f]{1,4}){1,5})|((:[0-9a-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9a-f]{1,4}:){1}(((:[0-9a-f]{1,4}){1,6})|((:[0-9a-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9a-f]{1,4}){1,7})|((:[0-9a-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))";
+  // /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$/;
 
   if (input.value.match(regex)) {
-    fetch(API_Key + input.value)
+    fetch(`https://ipapi.co/${input.value}/json/`)
       .then((res) => res.json())
       .then((data) => renderResults(data))
       .catch((error) => console.log(error));

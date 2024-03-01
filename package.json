@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/SaeM843/IP-Address-Tracker#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "sass": "^1.71.1"
   }
 }
