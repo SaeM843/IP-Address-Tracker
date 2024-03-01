@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 {: align="center"}
 
 # Frontend Mentor - IP address tracker
+=======
+<h1 align="center">IP address tracker</h1>
+>>>>>>> 06ef9e3bd31afbe7c45c68f7238921b2607c0395
 
+<p align="center">challenge from <a href="https://www.frontendmentor.io">Frontend Mentor</a></p>
+
+![Completed IP Address Tracker](./images/ip-tracker.png)
 ![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
