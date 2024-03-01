@@ -2,6 +2,7 @@
 
 <p align="center">challenge from <a href="https://www.frontendmentor.io">Frontend Mentor</a></p>
 
+![Completed IP Address Tracker](./images/ip-tracker.png)
 ![Design preview for the IP address tracker coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
