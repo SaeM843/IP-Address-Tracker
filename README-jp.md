@@ -17,6 +17,6 @@
 
 - HTML
 - SASS
-- JavaScrip
+- JavaScript
 - [LeafletJS](https://leafletjs.com/)
 - [ipapi](https://ipapi.co/)
